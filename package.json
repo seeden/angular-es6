@@ -1,9 +1,24 @@
 {
   "name": "angular-es6",
   "description": "ECMAScript 6 boilerplate for angular source code and webpack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
-  "author": "Zlatko Fedor",
+  "author": {
+    "name": "Zlatko Fedor",
+    "email": "zfedor@gmail.com",
+    "url": "http://www.cherrysro.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seeden/angular-es6.git"
+  },
+  "keywords": [
+    "angular",
+    "es6",
+    "boilerplate",
+    "ecmascript",
+    "ecmascript6"
+  ],
   "engines": {
     "node": ">= 0.10.0"
   },
