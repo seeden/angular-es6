@@ -2,7 +2,7 @@ export default function createDirectiveFactory(Directive) {
     var factory = function(...args) {
         var instance = new Directive(...args);
         for (var key in instance) {
-        	instance[key] = instance[key];
+            instance[key] = instance[key];
         }
 
         if(instance.link) {
@@ -19,12 +19,14 @@ export default function createDirectiveFactory(Directive) {
                 var instance = new Directive(...args);
                 controllerOrg.apply(instance, controllerArgs);
             };
+
+            instance.controller.$inject = controllerOrg.$inject || [];
         }        
 
         return instance;
     };
 
-    factory.$inject =  Directive.$inject;
+    factory.$inject =  Directive.$inject || [];
 
     return factory;
 }
