@@ -20,7 +20,7 @@ export default function createDirectiveFactory(Directive) {
                 controllerOrg.apply(instance, controllerArgs);
             };
 
-            instance.controller.$inject = controllerOrg.$inject || [];
+            instance.controller.$inject = controllerOrg.$inject || ['$scope', '$element'];
         }        
 
         return instance;
