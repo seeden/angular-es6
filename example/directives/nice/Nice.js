@@ -1,9 +1,12 @@
 import template from './nice.html';
+import { Inject } from 'angular-es6';
 
-export default class Nice {
+export default class Nice extends Inject {
   static $inject = ['$http'];
 
-  constructor($http) {
+  constructor(...args) {
+    super(...args);
+
     this.template = template;
     this.restrict = 'E';
   }

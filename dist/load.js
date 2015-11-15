@@ -3,9 +3,6 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-
-var _get = function get(_x5, _x6, _x7) { var _again = true; _function: while (_again) { var object = _x5, property = _x6, receiver = _x7; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x5 = parent; _x6 = property; _x7 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
 exports.directives = directives;
 exports.controllers = controllers;
 exports.services = services;
@@ -13,10 +10,6 @@ exports.factories = factories;
 exports.filters = filters;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _path = require('path');
 
@@ -78,26 +71,7 @@ function controllers(req) {
     }
 
     var Controller = req(filePath);
-
-    var InjectClass = (function (_Controller) {
-      _inherits(InjectClass, _Controller);
-
-      function InjectClass() {
-        _classCallCheck(this, InjectClass);
-
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
-        }
-
-        _get(Object.getPrototypeOf(InjectClass.prototype), 'constructor', this).apply(this, args);
-
-        (0, _createDirectiveFactory.storeInjections)(Controller.$inject, this, args);
-      }
-
-      return InjectClass;
-    })(Controller);
-
-    module.controller((0, _lodashStringCapitalize2['default'])(name), InjectClass);
+    module.controller((0, _lodashStringCapitalize2['default'])(name), Controller);
   });
 }
 
@@ -113,24 +87,6 @@ function services(req) {
     }
 
     var Service = req(filePath);
-
-    var InjectClass = (function (_Service) {
-      _inherits(InjectClass, _Service);
-
-      function InjectClass() {
-        _classCallCheck(this, InjectClass);
-
-        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-          args[_key2] = arguments[_key2];
-        }
-
-        _get(Object.getPrototypeOf(InjectClass.prototype), 'constructor', this).apply(this, args);
-
-        (0, _createDirectiveFactory.storeInjections)(Service.$inject, this, args);
-      }
-
-      return InjectClass;
-    })(Service);
 
     module.service(firstToLowerCase(name), Service);
   });

@@ -48,7 +48,7 @@ function createDirectiveFactory(Directive) {
           }
 
           var inst = new (_bind.apply(Directive, [null].concat(args)))();
-          storeInjections(factory.$inject, inst, args);
+          // storeInjections(factory.$inject, inst, args);
 
           // store link
           inst.link = function link() {

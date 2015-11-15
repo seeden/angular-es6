@@ -21,7 +21,7 @@ export default function createDirectiveFactory(Directive) {
       const linkOrg = instance.link;
       instance.link = (...linkArgs) => {
         const inst = new Directive(...args);
-        storeInjections(factory.$inject, inst, args);
+        // storeInjections(factory.$inject, inst, args);
 
         // store link
         inst.link = function link() { // must be a new function because $inject

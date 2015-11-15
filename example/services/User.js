@@ -1,8 +1,7 @@
-export default class User {
-  static $inject = ['$http'];
+import { Inject } from 'angular-es6';
 
-  constructor($http) {
-  }
+export default class User extends Inject {
+  static $inject = ['$http'];
 
   update() {
     const { $http } = this.$inject;

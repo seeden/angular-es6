@@ -26,6 +26,8 @@ export default class NiceDirective {
   static $inject = ['$http'];
 
   constructor($http) {
+    this.$http = $http;
+
     this.template = '<div>{{computeName('NICE')}}</div>';
     this.restrict = 'E';
     this.scope = {
@@ -34,12 +36,12 @@ export default class NiceDirective {
   }
 
   link(scope) {
+    this.scope = scope;
     scope.computeName = suffix => computeName(suffix);
   }
 
   computeName(suffix = '') {
-    const { $http } = this.$inject;
-    const { scope } = this.link.$inject;
+    const { $http, scope } = this;
 
     return 'Mr.' + $scope.name + ' ' +  suffix;
   }
@@ -54,29 +56,29 @@ export default class NiceDirective {
 export default class MainController {
   static $inject = [$scope, '$http'];
 
-  constructor($scope) {
+  constructor($scope, $http) {
+    this.$http = $http;
+
     $scope.doThis = () => this.doThis();
   }
 
   doThis() {
-    const { $http } = this.$inject;
+    const { $http } = this;
     ...
   }
 }
 
 ```
 
-It is safe to use this.$inject because this object is initialized immediately after the constructor.
-If you want to use $injected object in constructor you can use arguments or extend class Inject.
+### Class Inject
 
-
-### class Inject
-
-Object this.$inject is initialized after class constructor.
-If you want to use this.$inject in your constructor you need to extend Inject class.
+As you can see in the examples below. You need to store injected objects somehow.
+There is a better solution. You can extend you class with class Inject and use variable named this.$inject.
 
 In next example is called function doThis from the constructor.
 You can use this.$inject because this object was initialized by Inject constructor.
+
+Do not forget to use (...args). Inject class need to get all injected objects.
 
 ```js
 import { Inject } from 'angular-es6';

@@ -1,5 +1,5 @@
 export default function exceptionConfig($provide) {
-  $provide.decorator('$exceptionHandler', ($delegate) => {
+  $provide.decorator('$exceptionHandler', () => {
     return (exception) => {
       setTimeout(() => {
         throw exception;

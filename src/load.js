@@ -2,7 +2,7 @@ import path from 'path';
 import capitalize from 'lodash/string/capitalize';
 import angular from 'angular';
 import { register } from './compileProvider';
-import createDirectiveFactory, { storeInjections } from './createDirectiveFactory';
+import createDirectiveFactory from './createDirectiveFactory';
 
 function firstToLowerCase(str) {
   return str.substr(0, 1).toLowerCase() + str.substr(1);
@@ -43,16 +43,7 @@ export function controllers(req, moduleName = 'controllers') {
     }
 
     const Controller = req(filePath);
-
-    class InjectClass extends Controller {
-      constructor(...args) {
-        super(...args);
-
-        storeInjections(Controller.$inject, this, args);
-      }
-    }
-
-    module.controller(capitalize(name), InjectClass);
+    module.controller(capitalize(name), Controller);
   });
 }
 
@@ -66,14 +57,6 @@ export function services(req, moduleName = 'services') {
     }
 
     const Service = req(filePath);
-
-    class InjectClass extends Service {
-      constructor(...args) {
-        super(...args);
-
-        storeInjections(Service.$inject, this, args);
-      }
-    }
 
     module.service(firstToLowerCase(name), Service);
   });

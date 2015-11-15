@@ -6,7 +6,7 @@ Object.defineProperty(exports, '__esModule', {
 exports['default'] = exceptionConfig;
 
 function exceptionConfig($provide) {
-  $provide.decorator('$exceptionHandler', function ($delegate) {
+  $provide.decorator('$exceptionHandler', function () {
     return function (exception) {
       setTimeout(function () {
         throw exception;
