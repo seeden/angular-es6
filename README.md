@@ -37,13 +37,13 @@ export default class NiceDirective {
 
   link(scope) {
     this.scope = scope;
-    scope.computeName = suffix => computeName(suffix);
+    scope.computeName = (suffix) => this.computeName(suffix);
   }
 
   computeName(suffix = '') {
     const { $http, scope } = this;
 
-    return 'Mr.' + $scope.name + ' ' +  suffix;
+    return 'Mr.' + scope.name + ' ' +  suffix;
   }
 }
 
@@ -54,7 +54,7 @@ export default class NiceDirective {
 
 ```js
 export default class MainController {
-  static $inject = [$scope, '$http'];
+  static $inject = ['$scope', '$http'];
 
   constructor($scope, $http) {
     this.$http = $http;
@@ -72,8 +72,8 @@ export default class MainController {
 
 ### Class Inject
 
-As you can see in the examples below. You need to store injected objects somehow.
-There is a better solution. You can extend you class with class Inject and use variable named this.$inject.
+As you can see in the examples above. You need to store injected objects somehow.
+There is a better solution. You can extend you class with class named Inject and then you can use variable named this.$inject.
 
 In next example is called function doThis from the constructor.
 You can use this.$inject because this object was initialized by Inject constructor.
@@ -99,6 +99,38 @@ export default class MainController extends Inject {
 
 ```
 
+### Directive auto Inject
+
+You can use variables from the link function anywhere in your directive code.
+This feature is available without extending Inject class. Here is small example
+
+```js
+export default class NiceDirective {
+  static $inject = ['$http'];
+
+  constructor($http) {
+    this.$http = $http;
+
+    this.template = '<div>{{computeName('NICE')}}</div>';
+    this.restrict = 'E';
+    this.scope = {
+      name: '=',
+    };
+  }
+
+  link(scope) {
+    scope.computeName = (suffix) => this.computeName(suffix);
+  }
+
+  computeName(suffix = '') {
+    const { scope, element } = this.link.$inject;
+
+    element.text('Mr.' + scope.name + ' ' +  suffix);
+  }
+}
+
+```
+
 
 ### Auto load directives
 
@@ -106,8 +138,10 @@ Each directory need to have file index.js with content like this:
 
 ```js
 import { load } from 'angular-es6';
+const MODULE_NAME = 'directives';
 
 load.directives(require.context('./', true, /.*\.js$/));
+export default MODULE_NAME;
 ```
 
 
