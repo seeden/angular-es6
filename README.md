@@ -73,7 +73,7 @@ export default class MainController {
 ### Class Inject
 
 As you can see in the examples above. You need to store injected objects somehow.
-There is a better solution. You can extend you class with class named Inject and then you can use variable named this.$inject.
+There is a better solution. You can extend your class with class named Inject and then you can use variable named this.$inject.
 
 In next example is called function doThis from the constructor.
 You can use this.$inject because this object was initialized by Inject constructor.

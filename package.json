@@ -1,7 +1,7 @@
 {
   "name": "angular-es6",
   "description": "ECMAScript 6 boilerplate for angular source code and webpack",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "private": false,
   "author": {
     "name": "Zlatko Fedor",

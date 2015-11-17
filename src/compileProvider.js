@@ -4,8 +4,6 @@ let compileProviderInstance = null;
 export default function compileProvider($compileProvider) {
   compileProviderInstance = $compileProvider;
 
-  $compileProvider.debugInfoEnabled(false);
-
   Object.keys(directives).forEach((name) => {
     const directive = directives[name];
     compileProviderInstance.directive(name, directive);

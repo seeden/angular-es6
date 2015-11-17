@@ -11,8 +11,6 @@ var compileProviderInstance = null;
 function compileProvider($compileProvider) {
   compileProviderInstance = $compileProvider;
 
-  $compileProvider.debugInfoEnabled(false);
-
   Object.keys(directives).forEach(function (name) {
     var directive = directives[name];
     compileProviderInstance.directive(name, directive);
