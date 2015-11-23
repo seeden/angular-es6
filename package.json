@@ -1,7 +1,7 @@
 {
   "name": "angular-es6",
   "description": "ECMAScript 6 boilerplate for angular source code and webpack",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "private": false,
   "author": {
     "name": "Zlatko Fedor",
@@ -31,29 +31,31 @@
   "scripts": {
     "prepublish": "npm run build",
     "test": "babel-node ./node_modules/gulp/bin/gulp.js test",
-    "build": "node ./node_modules/gulp/bin/gulp.js build",
-    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.jsx ./src/"
+    "build": "babel-node ./node_modules/gulp/bin/gulp.js build",
+    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.jsx ."
   },
   "main": "./dist/index.js",
   "dependencies": {
     "lodash": "^3.10.1"
   },
-  "peerDependencies": {
-    "angular": "^1.2.0"
-  },
   "devDependencies": {
+    "angular": "^1.4.7",
     "babel-loader": "^5.4.0",
     "babel": "^5.8.34",
+    "babel-core": "^5.8.34",
     "babel-eslint": "^4.1.3",
-    "eslint": "^1.8.0",
-    "eslint-config-airbnb": "^0.1.0",
+    "eslint": "^1.10.1",
+    "eslint-config-airbnb": "^1.0.0",
     "eslint-loader": "^1.1.1",
-    "eslint-plugin-react": "^3.6.3",
-    "webpack": "^1.12.6",
+    "eslint-plugin-react": "^3.10.0",
+    "webpack": "^1.12.8",
     "gulp": "^3.9.0",
     "gulp-mocha": "^2.1.3",
     "gulp-babel": "^5.2.1",
     "gulp-util": "^3.0.7",
     "should": "^7.1.1"
+  },
+  "peerDependencies": {
+    "angular": "^1.2.0"
   }
 }
