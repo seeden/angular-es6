@@ -23,7 +23,7 @@ export function directives(req) {
     }
 
     const Direktive = req(filePath);
-    register(name, createDirectiveFactory(Direktive));
+    register(name, createDirectiveFactory(Direktive.default ? Direktive.default : Direktive));
   });
 }
 
@@ -43,7 +43,7 @@ export function controllers(req, moduleName = 'controllers') {
     }
 
     const Controller = req(filePath);
-    module.controller(capitalize(name), Controller);
+    module.controller(capitalize(name), Controller.default ? Controller.default : Controller);
   });
 }
 
@@ -57,8 +57,7 @@ export function services(req, moduleName = 'services') {
     }
 
     const Service = req(filePath);
-
-    module.service(firstToLowerCase(name), Service);
+    module.service(firstToLowerCase(name), Service.default ? Service.default : Service);
   });
 }
 
@@ -71,7 +70,8 @@ export function factories(req, moduleName = 'factories') {
       return;
     }
 
-    module.factory(capitalize(name), req(filePath));
+    const factory = req(filePath);
+    module.factory(capitalize(name), factory.default ? factory.default : factory);
   });
 }
 
@@ -84,6 +84,7 @@ export function filters(req, moduleName = 'filters') {
       return;
     }
 
-    module.filter(name, req(filePath));
+    const filter = req(filePath);
+    module.filter(name, filter.default ? filter.default : filter);
   });
 }

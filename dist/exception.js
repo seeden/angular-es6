@@ -1,10 +1,9 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports['default'] = exceptionConfig;
-
+exports.default = exceptionConfig;
 function exceptionConfig($provide) {
   $provide.decorator('$exceptionHandler', function () {
     return function (exception) {
@@ -16,4 +15,3 @@ function exceptionConfig($provide) {
 }
 
 exceptionConfig.$inject = ['$provide'];
-module.exports = exports['default'];

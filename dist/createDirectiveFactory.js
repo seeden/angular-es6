@@ -1,22 +1,23 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _bind = Function.prototype.bind;
 exports.storeInjections = storeInjections;
-exports['default'] = createDirectiveFactory;
+exports.default = createDirectiveFactory;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+var _isFunction = require('lodash/lang/isFunction');
 
-var _lodashLangIsFunction = require('lodash/lang/isFunction');
+var _isFunction2 = _interopRequireDefault(_isFunction);
 
-var _lodashLangIsFunction2 = _interopRequireDefault(_lodashLangIsFunction);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var LINK_INJECT = ['scope', 'element', 'attrs', 'controller', 'transcludeFn'];
 
-function storeInjections($inject, instance, args) {
-  if ($inject === undefined) $inject = [];
+function storeInjections() {
+  var $inject = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+  var instance = arguments[1];
+  var args = arguments[2];
   var varName = arguments.length <= 3 || arguments[3] === undefined ? '$inject' : arguments[3];
 
   var instanceInject = instance[varName] = instance[varName] || {};
@@ -34,12 +35,12 @@ function createDirectiveFactory(Directive) {
       args[_key] = arguments[_key];
     }
 
-    var instance = new (_bind.apply(Directive, [null].concat(args)))();
+    var instance = new (Function.prototype.bind.apply(Directive, [null].concat(args)))();
     Object.keys(instance).forEach(function (key) {
       instance[key] = instance[key];
     });
 
-    if (instance.link && (0, _lodashLangIsFunction2['default'])(instance.link)) {
+    if (instance.link && (0, _isFunction2.default)(instance.link)) {
       (function () {
         var linkOrg = instance.link;
         instance.link = function () {
@@ -47,7 +48,7 @@ function createDirectiveFactory(Directive) {
             linkArgs[_key2] = arguments[_key2];
           }
 
-          var inst = new (_bind.apply(Directive, [null].concat(args)))();
+          var inst = new (Function.prototype.bind.apply(Directive, [null].concat(args)))();
           // storeInjections(factory.$inject, inst, args);
 
           // store link
@@ -63,7 +64,7 @@ function createDirectiveFactory(Directive) {
       })();
     }
 
-    if (instance.controller && (0, _lodashLangIsFunction2['default'])(instance.controller)) {
+    if (instance.controller && (0, _isFunction2.default)(instance.controller)) {
       (function () {
         var controllerOrg = instance.controller;
         instance.controller = function () {
@@ -71,7 +72,7 @@ function createDirectiveFactory(Directive) {
             controllerArgs[_key3] = arguments[_key3];
           }
 
-          var inst = new (_bind.apply(Directive, [null].concat(args)))();
+          var inst = new (Function.prototype.bind.apply(Directive, [null].concat(args)))();
           inst.ctrl = _this;
           storeInjections(instance.controller.$inject, inst.ctrl, controllerArgs);
 

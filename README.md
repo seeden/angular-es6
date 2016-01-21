@@ -8,6 +8,9 @@ Here is a simple project with everything what you need at the beginning.
  - You can write directives like a class
  - Autoload directives, controllers, services, filters and factories
 
+## Babel
+
+Use version 2.x for the babel 5 and version 3.x for the babel 6
 
 ## Instalation
 
