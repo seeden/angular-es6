@@ -138,9 +138,9 @@ Each directory need to have file index.js with content like this:
 
 ```js
 import { load } from 'angular-es6';
-const MODULE_NAME = 'directives';
+const MODULE_NAME = 'myProject.directives';
 
-load.directives(require.context('./', true, /.*\.js$/));
+load.directives(require.context('./', true, /.*\.js$/), MODULE_NAME);
 export default MODULE_NAME;
 ```
 
