@@ -1,12 +1,9 @@
-# Angular ECMAScript 6 config and boilerplate
-
-Do you want to use ES6 with angular and webpack?
-Here is a simple project with everything what you need at the beginning.
+# Angular ES6 utility library. Write directives, controllers and services as ES6 classes.
 
 ## What you will get
 
- - You can write directives like a class
- - Autoload directives, controllers, services, filters and factories
+ - Write directives, controllers and services like an ES6 classes
+ - Autoload directives, controllers, services, filters and factories with webpack
 
 ## Babel
 
@@ -20,7 +17,7 @@ npm install angular-es6
 
 ## Examples
 
-Here is multiple examples:
+You can find whole exmple project in the [example](https://github.com/seeden/angular-es6/tree/master/example) directory.
 
 ### Directive
 
