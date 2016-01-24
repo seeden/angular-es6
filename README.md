@@ -17,7 +17,7 @@ npm install angular-es6
 
 ## Examples
 
-You can find whole exmple project in the [example](https://github.com/seeden/angular-es6/tree/master/example) directory.
+You can find whole example project in the [example](https://github.com/seeden/angular-es6/tree/master/example) directory.
 
 ### Directive
 
