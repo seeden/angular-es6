@@ -1,8 +1,8 @@
-import isFunction from 'lodash/lang/isFunction';
+import isFunction from 'lodash/isFunction';
 
 const LINK_INJECT = ['scope', 'element', 'attrs', 'controller', 'transcludeFn'];
 
-export function storeInjections($inject = [], instance, args, varName = '$inject') {
+export function storeInjections($inject = [], instance = {}, args, varName = '$inject') {
   const instanceInject = instance[varName] = instance[varName] || {};
 
   $inject.forEach((injectName, index) => {

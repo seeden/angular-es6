@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.storeInjections = storeInjections;
 exports.default = createDirectiveFactory;
 
-var _isFunction = require('lodash/lang/isFunction');
+var _isFunction = require('lodash/isFunction');
 
 var _isFunction2 = _interopRequireDefault(_isFunction);
 
@@ -16,7 +16,7 @@ var LINK_INJECT = ['scope', 'element', 'attrs', 'controller', 'transcludeFn'];
 
 function storeInjections() {
   var $inject = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-  var instance = arguments[1];
+  var instance = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
   var args = arguments[2];
   var varName = arguments.length <= 3 || arguments[3] === undefined ? '$inject' : arguments[3];
 

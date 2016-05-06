@@ -1,8 +1,11 @@
 import path from 'path';
-import capitalize from 'lodash/string/capitalize';
 import angular from 'angular';
 import { register } from './compileProvider';
 import createDirectiveFactory from './createDirectiveFactory';
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 function firstToLowerCase(str) {
   return str.substr(0, 1).toLowerCase() + str.substr(1);
@@ -43,7 +46,7 @@ export function controllers(req, moduleName = 'controllers') {
     }
 
     const Controller = req(filePath);
-    module.controller(capitalize(name), Controller.default ? Controller.default : Controller);
+    module.controller(capitalizeFirstLetter(name), Controller.default ? Controller.default : Controller);
   });
 }
 
@@ -71,7 +74,7 @@ export function factories(req, moduleName = 'factories') {
     }
 
     const factory = req(filePath);
-    module.factory(capitalize(name), factory.default ? factory.default : factory);
+    module.factory(capitalizeFirstLetter(name), factory.default ? factory.default : factory);
   });
 }
 

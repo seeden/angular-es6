@@ -13,10 +13,6 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _capitalize = require('lodash/string/capitalize');
-
-var _capitalize2 = _interopRequireDefault(_capitalize);
-
 var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
@@ -28,6 +24,10 @@ var _createDirectiveFactory = require('./createDirectiveFactory');
 var _createDirectiveFactory2 = _interopRequireDefault(_createDirectiveFactory);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 function firstToLowerCase(str) {
   return str.substr(0, 1).toLowerCase() + str.substr(1);
@@ -70,7 +70,7 @@ function controllers(req) {
     }
 
     var Controller = req(filePath);
-    module.controller((0, _capitalize2.default)(name), Controller.default ? Controller.default : Controller);
+    module.controller(capitalizeFirstLetter(name), Controller.default ? Controller.default : Controller);
   });
 }
 
@@ -102,7 +102,7 @@ function factories(req) {
     }
 
     var factory = req(filePath);
-    module.factory((0, _capitalize2.default)(name), factory.default ? factory.default : factory);
+    module.factory(capitalizeFirstLetter(name), factory.default ? factory.default : factory);
   });
 }
 
