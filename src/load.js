@@ -46,7 +46,9 @@ export function controllers(req, moduleName = 'controllers') {
     }
 
     const Controller = req(filePath);
-    module.controller(capitalizeFirstLetter(name), Controller.default ? Controller.default : Controller);
+    module.controller(capitalizeFirstLetter(name), Controller.default
+      ? Controller.default
+      : Controller);
   });
 }
 
