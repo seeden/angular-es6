@@ -1,7 +1,7 @@
 {
   "name": "angular-es6",
   "description": "Angular ES6 utility library. Write directives, controllers and services as ES6 classes.",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "private": false,
   "author": {
     "name": "Zlatko Fedor",
