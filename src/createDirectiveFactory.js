@@ -17,6 +17,11 @@ export default function createDirectiveFactory(Directive) {
       instance[key] = instance[key];
     });
 
+    // isolate scope of the directive
+    if (typeof instance.scope === 'undefined') {
+      instance.scope = {};
+    }
+
     if (instance.link && isFunction(instance.link)) {
       const linkOrg = instance.link;
       instance.link = (...linkArgs) => {
