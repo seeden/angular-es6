@@ -29,15 +29,17 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "npm run snyk-protect && npm run build",
     "test": "babel-node ./node_modules/gulp/bin/gulp.js test",
     "build": "babel-node ./node_modules/gulp/bin/gulp.js build",
-    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.jsx ."
+    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.jsx .",
+    "snyk-protect": "snyk protect"
   },
   "main": "./dist/index.js",
   "dependencies": {
     "lodash": "^4.13.1",
-    "events": "^1.1.0"
+    "events": "^1.1.0",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "angular": "^1.5.6",
@@ -64,5 +66,6 @@
   },
   "peerDependencies": {
     "angular": "^1.2.0"
-  }
+  },
+  "snyk": true
 }
